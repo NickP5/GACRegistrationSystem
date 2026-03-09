@@ -1,6 +1,7 @@
 
 // Pavla Yakimova coded this class
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Admin {
@@ -12,18 +13,15 @@ public class Admin {
 	private ArrayList<Student> students;
 	
 	// Initialize constructor
-	public Admin(int adminID,String username, String password, String classes) {
+	public Admin(int adminID,String username, String password, ArrayList<Class> classes, ArrayList<Student> students) {
 		this.adminID = adminID;
 		this.username = username;
 		this.password = password;
 		this.classes = new ArrayList<>();
 		this.students = new ArrayList<>();
 	}
-	
-	// Getters & Setters
-	
 
-	
+		
 	// Methods
 	private void changePassword(String newPassword) {
 		// set new password
@@ -140,5 +138,15 @@ public class Admin {
 			}
 		}
 	}
+	
+    public static void main (String[] args) {
+    	
+    	List<Class> classes = new ArrayList<>();
+    	classes.add(new Class());
+    	List<Student> students = new ArrayList<>();
+    	students.add(new Student());
+    	Admin Main = new Admin(123, "Pavla", "hello123", classes, students);
+    	
+    }
 		
 }
