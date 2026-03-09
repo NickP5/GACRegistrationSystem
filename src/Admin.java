@@ -13,12 +13,10 @@ public class Admin {
 	private ArrayList<Student> students;
 	
 	// Initialize constructor
-	public Admin(int adminID,String username, String password, ArrayList<Class> classes, ArrayList<Student> students) {
+	public Admin(int adminID,String username, String password) {
 		this.adminID = adminID;
 		this.username = username;
 		this.password = password;
-		this.classes = new ArrayList<>();
-		this.students = new ArrayList<>();
 	}
 
 		
@@ -34,7 +32,7 @@ public class Admin {
 		Class newClass = new Class(classDescription, department, level, time, preReqs, semester, professor, name, dayOrNight);
 		
 		// add it to the class list
-		this.classes.add(newClass);
+		classes.add(newClass);
 		
 		return newClass;
 		
@@ -43,7 +41,7 @@ public class Admin {
 	private void editClass(String className, String newDescription, String newDepartment, int newLevel, String newTime, ArrayList<String> newPreReqs, int newSemester, String newProfessor, boolean newDayorNight) {
 		
 		// loop through the list of classes to find the one needing editing
-		for (Class c : this.classes) {
+		for (Class c : classes) {
 			
 			if (c.getName() == className) {
 				
@@ -72,7 +70,7 @@ public class Admin {
 		Student newStudent = new Student(studentID, username, password, grade_level, gpa, major, Classes, graduated, status);
 		
 		// add the new student to the array list
-		this.students.add(newStudent);
+		students.add(newStudent);
 		
 		return newStudent;
 		
@@ -80,13 +78,13 @@ public class Admin {
 	
 	private void removeStudent(Student student) {
 		// remove student from the list
-		this.students.remove(student);
+		students.remove(student);
 	}
 	
 	private void editStudent(int studentID, String newUsername, String newPassword, int newGradeLevel, double newGpa, int newCredits, ArrayList<Class> newClasses, boolean graduated, String newStatus) {
 		
 		// loop through all students in array
-		for (Student s : this.students) {
+		for (Student s : students) {
 			
 			// if the studentID finds a match update all fields and send message
 			if (s.getStudentID() == studentID) {
@@ -112,7 +110,7 @@ public class Admin {
 	// updates the major of the student
 	private void updateMajor(int studentID, Major newMajor) {
 		
-		for (Student s : this.students) {
+		for (Student s : students) {
 			if (s.getStudentID() == studentID) {
 				Degree d = s.getDegree();
 				d.setMajor(newMajor);
@@ -127,7 +125,7 @@ public class Admin {
 	// updates the minor of the student 
 	private void updateMinor(int studentID, Minor newMinor) {
 		
-		for (Student s : this.students) {
+		for (Student s : students) {
 			if (s.getStudentID() == studentID) {
 				Degree d = s.getDegree();
 				d.setMinor(newMinor);
@@ -140,12 +138,8 @@ public class Admin {
 	}
 	
     public static void main (String[] args) {
-    	
-    	List<Class> classes = new ArrayList<>();
-    	classes.add(new Class());
-    	List<Student> students = new ArrayList<>();
-    	students.add(new Student());
-    	Admin Main = new Admin(123, "Pavla", "hello123", classes, students);
+    
+    	Admin MainA = new Admin(123, "Pavla", "hello123");
     	
     }
 		
