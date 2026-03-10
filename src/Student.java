@@ -27,7 +27,7 @@ public class Student {
         this.status = status;
     }
 
-    public int getstudentID() { return studentID; }
+    public int getStudentID() { return studentID; }
     public String getUsername() { return username; }
     public String getPassword() { return password; }
     public int getGradeLevel() { return grade_level; }
@@ -63,6 +63,39 @@ public class Student {
 	    return "Password updated"; 
 	    	
 	}
+    
+    public void setUsername(String newUsername) {
+    	this.username = newUsername;
+    	}
+
+    	public void setPassword(String newPassword) {
+    	this.password = newPassword;
+    	}
+
+    	public void setGradeLevel(int newGradeLevel) {
+    	//set new level
+    	this.grade_level = newGradeLevel;
+    	}
+
+    	public void setGPA(double newGpa) {
+    	this.gpa = newGpa;
+    	}
+
+    	public void setCredits(int newCredits) {
+    	this.credits = newCredits;
+    	}
+
+    	public void setGraduated(boolean graduated) {
+    	this.graduated = graduated;
+    	}
+
+    	public void setClasses(List<Class> newClasses) {
+    	this.classes = newClasses;
+    	}
+
+    	public void setStatus(String newStatus) {
+    	this.status = newStatus;
+    	}
     //Testing
     public static void main (String[] args) {
     	// CHANGE STRING TO CLASS TYPE
@@ -75,7 +108,7 @@ public class Student {
     	Degree.Major ComputerScience = new Degree.Major("ComputerScience", 123, majorReqs, false);
     	Degree.Minor Stats = new Degree.Minor("Stats", 321, minorReqs, false);
     	Degree CS = new Degree(ComputerScience, Stats, 123, 321, false);
-    	Student Alexander = new Student(123, "Lex", "stuff",4, 4.0, louisClasses, 42, CS, true, "Evil");
+    	Student Alexander = new Student(123, "Lex", "stuff",4, 4.0,42 , CS, louisClasses , true, "Evil");
     	Alexander.changePassword("greatproject");
     	
     }

@@ -110,12 +110,12 @@ public class Admin {
 	}
 	
 	// updates the major of the student
-	private void updateMajor(int studentID, Major newMajor) {
+	private void updateMajor(int studentID, String newMajor) {
 		
 		for (Student s : students) {
 			if (s.getStudentID() == studentID) {
 				Degree d = s.getDegree();
-				d.setMajor(newMajor);
+				d.major.majorName = newMajor;
 				System.out.println("The student major has been updated.");
 			}
 			else {
@@ -125,12 +125,12 @@ public class Admin {
 	}
 	
 	// updates the minor of the student 
-	private void updateMinor(int studentID, Minor newMinor) {
+	private void updateMinor(int studentID, String newMinor) {
 		
 		for (Student s : students) {
 			if (s.getStudentID() == studentID) {
 				Degree d = s.getDegree();
-				d.setMinor(newMinor);
+				d.minor.minorName = newMinor;
 				System.out.println("The student minor has been updated.");
 			}
 			else {
@@ -141,7 +141,22 @@ public class Admin {
 	
     public static void main (String[] args) {
     
-    	Admin MainA = new Admin(123, "Pavla", "hello123");
+    	List<String> softwarePreReqs = List.of("Systems 1", "Systems 2");
+    	Class softwareEngineering = new Class("Software Engineering", "teaching how to engineer software", "MCS", 300, "12:00-1:35", softwarePreReqs, "Spring 2026", "Louis Yu", true, 4);
+    	Class gameDev = new Class("Software Engineering", "teaching how to engineer software", "MCS", 300, "12:00-1:35", softwarePreReqs, "Spring 2026", "Louis Yu", true, 4);
+    	List<Class> louisClasses = List.of(softwareEngineering, gameDev);
+    	List<String> majorReqs = List.of("MCS101", "MCS102");
+    	List<String> minorReqs = List.of("MCS212", "MCS201");
+    	Degree.Major ComputerScience = new Degree.Major("ComputerScience", 123, majorReqs, false);
+    	Degree.Minor Stats = new Degree.Minor("Stats", 321, minorReqs, false);
+    	Degree CS = new Degree(ComputerScience, Stats, 123, 321, false);
+    	Student Alexander = new Student(123, "Lex", "stuff",4, 4.0,42 , CS, louisClasses , true, "Evil");
+    	Student Lex = new Student(123, "Lex", "stuff",4, 4.0,42 , CS, louisClasses , true, "Evil");
+    	List<Student> students = List.of(Alexander, Lex);
+    	
+    	Admin MainA = new Admin(123, "Pavla", "hello123", louisClasses, students);
+    	MainA.updateMinor(123, "Art");
+    	System.out.println(Lex.getDegree().minor.minorName);
     	
     }
 		
