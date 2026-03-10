@@ -42,6 +42,45 @@ public class Class {
 		return this.className;
 	}
 	
+	public void setClassDescription(String newDescription) {
+		//set new classDescription
+		this.classDescription = newDescription;
+	}
+	
+	public void setDepartment(String newDepartment) {
+		//set new classDepartment
+		this.department = newDepartment;
+	}
+	
+	public void setLevel(int newLevel) {
+		//set new level
+		this.level = newLevel;
+	}
+	
+	public void setTime(String newTime) {
+		//set new time
+		this.time = newTime;
+	}
+	
+	public void setClassPreReqs(List<String> newPreReqs) {
+		//set new classPreReqs
+		this.classPreReqs = newPreReqs;
+	}
+	
+	public void setSemester(String newSemester) {
+		//set new semester
+		this.semester = newSemester;
+	}
+	
+	public void setProfessor(String newProfessor) {
+		//set new professor
+		this.professor = newProfessor;
+	}
+	
+	public void setDayorNight(boolean newDayorNight) {
+		//set new classDescription
+		this.dayOrNight = newDayorNight;
+	}
 	
 	
 	public static void main(String[] args) {

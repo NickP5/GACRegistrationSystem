@@ -38,7 +38,7 @@ public class Admin {
 		
 	}
 	
-	protected void editClass(String className, String newDescription, String newDepartment, int newLevel, String newTime, List<String> newPreReqs, int newSemester, String newProfessor, boolean newDayorNight, int newCredits) {
+	protected void editClass(String className, String newDescription, String newDepartment, int newLevel, String newTime, List<String> newPreReqs, String newSemester, String newProfessor, boolean newDayorNight, int newCredits) {
 		
 		// loop through the list of classes to find the one needing editing
 		for (Class c : classes) {
@@ -49,7 +49,7 @@ public class Admin {
 				c.setDepartment(newDepartment);
 				c.setLevel(newLevel);
 				c.setTime(newTime);
-				c.setClassPreReeqs(newPreReqs);
+				c.setClassPreReqs(newPreReqs);
 				c.setSemester(newSemester);
 				c.setProfessor(newProfessor);
 				c.setDayorNight(newDayorNight);
