@@ -1,4 +1,4 @@
-package Student;
+
 import java.util.List;
 
 public class Student {
@@ -63,7 +63,7 @@ public class Student {
     	List<String> louisClasses = List.of("MCS101","MCS374");
     	Student Alexander = new Student(123, "Lex", "stuff",4, 4.0, louisClasses, 42, true, "Evil");
     	Alexander.changePassword("greatproject");
-    
+    	
     }
 
 }

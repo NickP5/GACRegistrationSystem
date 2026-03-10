@@ -26,24 +26,24 @@ public class Admin {
 		this.password = newPassword;
 	}
 	
-	private Class createClass(String classDescription, String department, int level, String time, ArrayList<String> preReqs, int semester, String professor, String name, boolean dayOrNight) {
+	private Class createClass(String className, String classDescription, String department, int level, String time, List<String> classPreReqs, String semester, String professor, boolean dayOrNight, int credits) {
 		
 		// create a new class with the given values
-		Class newClass = new Class(classDescription, department, level, time, preReqs, semester, professor, name, dayOrNight);
+		Class newClass = new Class(className, classDescription, department, level, time, classPreReqs, semester, professor, dayOrNight, credits);
 		
 		// add it to the class list
-		classes.add(newClass);
+		classes.add(newClass); 
 		
 		return newClass;
 		
 	}
 	
-	private void editClass(String className, String newDescription, String newDepartment, int newLevel, String newTime, ArrayList<String> newPreReqs, int newSemester, String newProfessor, boolean newDayorNight) {
+	protected void editClass(String className, String newDescription, String newDepartment, int newLevel, String newTime, List<String> newPreReqs, int newSemester, String newProfessor, boolean newDayorNight, int newCredits) {
 		
 		// loop through the list of classes to find the one needing editing
 		for (Class c : classes) {
 			
-			if (c.getName() == className) {
+			if (c.getClassName() == className) {
 				
 				c.setClassDescription(newDescription);
 				c.setDepartment(newDepartment);

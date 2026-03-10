@@ -32,7 +32,7 @@ public class Professor {
         this.rank = rank;
     }
 
-    public String editClass() {
+    protected String editClass() {
     	// This is to change the description of a class, cannot be implemented yet
     	return name;
     	
