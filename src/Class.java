@@ -8,9 +8,10 @@ public class Class {
 	private int level;
 	private String time;
 	private List<String> classPreReqs;
-	private int semester;
+	private String semester;
 	private String professor;
-	private boolean dayOrNight;
+	private boolean dayOrNight; //true if day, false if night
+	private int credits; //number of credits each class is
 	
 	// to initialize Class
 	public Class(
@@ -20,9 +21,10 @@ public class Class {
 			int level,
 			String time,
 			List<String> classPreReqs,
-			int semester,
+			String semester,
 			String professor,
-			boolean dayOrNight) {
+			boolean dayOrNight,
+			int credits) {
 		this.className = className;
 		this.classDescription = classDescription;
 		this.department = department;
@@ -32,6 +34,7 @@ public class Class {
 		this.semester = semester;
 		this.professor = professor;
 		this.dayOrNight = dayOrNight;
+		this.credits = credits;
 	}
 	
 	public String getClassName() {
@@ -39,16 +42,11 @@ public class Class {
 		return this.className;
 	}
 	
-	public int updateCredits() {
-		//this will add this course to the student's total credits (cannot be completed until Student is done
-		//Students.credits += 1;
-		//return Students.credits;
-		return level;
-	}
+	
 	
 	public static void main(String[] args) {
 		List<String> softwarePreReqs = List.of("Systems 1", "Systems 2");
-		Class softwareEngineering = new Class("Software Engineering", "teaching how to engineer software", "MCS", 300, "12:00-1:35", softwarePreReqs, 2026, "Louis Yu", true);
+		Class softwareEngineering = new Class("Software Engineering", "teaching how to engineer software", "MCS", 300, "12:00-1:35", softwarePreReqs, "Spring 2026", "Louis Yu", true, 4);
 		softwareEngineering.getClassName();
 	}
 }
