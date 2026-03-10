@@ -7,20 +7,20 @@ public class Student {
 	String password;
 	int grade_level;
 	double gpa;
-	//Major major; 
-	private List<String> classes;
+	public Degree degree; 
+	private List<Class> classes;
 	int credits;
 	boolean graduated;
 	String status;
 
 	//Major major in Student
-    public Student(int studentID, String username, String password, int grade_level, double gpa, List<String> classes, int credits, boolean graduated, String status) {
+    public Student(int studentID, String username, String password, int grade_level, double gpa, int credits, Degree degree, List<Class> classes, boolean graduated, String status) {
         this.studentID = studentID;
         this.username = username;
         this.password = password;
         this.grade_level = grade_level;
         this.gpa = gpa;
-        //this.major = major;
+        this.degree = degree;
         this.classes = classes;
         this.credits = credits;
         this.graduated = graduated;
@@ -32,27 +32,33 @@ public class Student {
     public String getPassword() { return password; }
     public int getGradeLevel() { return grade_level; }
     public double getGpa() { return gpa; }
-    //public Major getMajor() { return major;} 
-    public List<String> getClasses(){ return this.classes; }
+    public Degree getDegree() { return degree; } 
+    public List<Class> getClasses(){ return this.classes; }
     public int getCredits() { return credits; }
     public boolean getGraduated() { return graduated; }
     public String getStatus() { return status; }
     
     //Functions
-    public void addClass(String newClass) {
+    private void addClass(Class newClass) {
     	this.classes.add(newClass);
     }
     
-    public void dropClass(String delClass) {
-    	this.classes.remove(delClass);
+    private void dropClass(String delClass) {
+    	for (Class c : classes) {
+    		if (c.getClassName() == delClass) {
+    			this.classes.remove(c);
+    		}
+    	}
     	
     }
     
-    public void changeMajor(String newMajor) {
-    	//this.major = newMajor(object??)
+    private void changeDegree(String newMajor, String newMinor) {
+    	//Changes minor and major
+    	degree.major.majorName = newMajor;
+    	degree.minor.minorName = newMinor;
     }
     
-    public String changePassword(String newPassword){
+    private String changePassword(String newPassword){
     	this.password = newPassword;
 	    return "Password updated"; 
 	    	
@@ -60,8 +66,16 @@ public class Student {
     //Testing
     public static void main (String[] args) {
     	// CHANGE STRING TO CLASS TYPE
-    	List<String> louisClasses = List.of("MCS101","MCS374");
-    	Student Alexander = new Student(123, "Lex", "stuff",4, 4.0, louisClasses, 42, true, "Evil");
+    	List<String> softwarePreReqs = List.of("Systems 1", "Systems 2");
+    	Class softwareEngineering = new Class("Software Engineering", "teaching how to engineer software", "MCS", 300, "12:00-1:35", softwarePreReqs, "Spring 2026", "Louis Yu", true, 4);
+    	Class gameDev = new Class("Software Engineering", "teaching how to engineer software", "MCS", 300, "12:00-1:35", softwarePreReqs, "Spring 2026", "Louis Yu", true, 4);
+    	List<Class> louisClasses = List.of(softwareEngineering, gameDev);
+    	List<String> majorReqs = List.of("MCS101", "MCS102");
+    	List<String> minorReqs = List.of("MCS212", "MCS201");
+    	Degree.Major ComputerScience = new Degree.Major("ComputerScience", 123, majorReqs, false);
+    	Degree.Minor Stats = new Degree.Minor("Stats", 321, minorReqs, false);
+    	Degree CS = new Degree(ComputerScience, Stats, 123, 321, false);
+    	Student Alexander = new Student(123, "Lex", "stuff",4, 4.0, louisClasses, 42, CS, true, "Evil");
     	Alexander.changePassword("greatproject");
     	
     }

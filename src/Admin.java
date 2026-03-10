@@ -9,14 +9,16 @@ public class Admin {
 	private int adminID;
 	private String username;
 	private String password;
-	private ArrayList<Class> classes;
-	private ArrayList<Student> students;
+	private List<Class> classes;
+	private List<Student> students;
 	
 	// Initialize constructor
-	public Admin(int adminID,String username, String password) {
+	public Admin(int adminID,String username, String password, List<Class> classes, List<Student> students) {
 		this.adminID = adminID;
 		this.username = username;
 		this.password = password;
+		this.classes = classes;
+		this.students = students;
 	}
 
 		
@@ -64,10 +66,10 @@ public class Admin {
 		}
 	}
 	
-	private Student addStudent(int studentID, String username, String password, int grade_level, double gpa, int credits, Object major, ArrayList<Class> Classes, boolean graduated, String status) {
+	private Student addStudent(int studentID, String username, String password, int grade_level, double gpa, int credits, Degree degree, List<Class> classes, boolean graduated, String status) {
 		
 		// create new student
-		Student newStudent = new Student(studentID, username, password, grade_level, gpa, major, Classes, graduated, status);
+		Student newStudent = new Student(studentID, username, password, grade_level, gpa, credits, degree, classes, graduated, status);
 		
 		// add the new student to the array list
 		students.add(newStudent);

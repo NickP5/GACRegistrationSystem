@@ -28,13 +28,15 @@ public class Degree {
     	return completed;
     }
     
-    static class Minor {
+    public static class Minor {
     	
+    	public String minorName;
     	public int minorID;
     	public List<String> minorRequirements;
     	public Boolean completed;
     	
-    	public Minor(int minorID, List<String> minorRequirements, Boolean completed) {
+    	public Minor(String minorName, int minorID, List<String> minorRequirements, Boolean completed) {
+    		this.minorName = minorName;
     		this.minorID = minorID;
     		this.minorRequirements = minorRequirements;
     		this.completed = false;
@@ -47,13 +49,15 @@ public class Degree {
     	
     }
     
-    static class Major {
+    public static class Major {
     	
+    	public String majorName;
     	public int majorID;
     	public List<String> majorRequirements;
     	public Boolean completed;
     	
-    	public Major(int majorID, List<String> majorRequirements, Boolean completed) {
+    	public Major(String majorName, int majorID, List<String> majorRequirements, Boolean completed) {
+    		this.majorName = majorName;
     		this.majorID = majorID;
     		this.majorRequirements = majorRequirements;
     		this.completed = false;
@@ -71,8 +75,8 @@ public class Degree {
     	
     	List<String> majorReqs = List.of("MCS101", "MCS102");
     	List<String> minorReqs = List.of("MCS212", "MCS201");
-    	Degree.Major ComputerScience = new Degree.Major(123, majorReqs, false);
-    	Degree.Minor Stats = new Degree.Minor(321, minorReqs, false);
+    	Degree.Major ComputerScience = new Degree.Major("ComputerScience", 123, majorReqs, false);
+    	Degree.Minor Stats = new Degree.Minor("Stats", 321, minorReqs, false);
     	Degree CS = new Degree(ComputerScience, Stats, 123, 321, false);
     	System.out.println(CS.isCompleted());
     }
